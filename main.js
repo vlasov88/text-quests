@@ -183,7 +183,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ng-container *ngIf=\"page\">\n  <h2>{{page?.caption}}</h2>\n  <p>{{page?.text}}</p>\n  <div>\n    <ng-container ngFor*ngFor=\"let option of page.options\">\n      <button (click)=\"onClick(option.route)\">{{option.text}}</button>\n    </ng-container>\n  </div>\n</ng-container>\n"
+module.exports = "<ng-container *ngIf=\"page\">\n  <h2>{{page?.caption}}</h2>\n  <p>{{page?.text}}</p>\n  <div *ngIf=\"page.options\">\n    <ul *ngFor=\"let option of page.options\">\n      <li><button (click)=\"onClick(option.route)\">{{option.text}}</button></li>\n    </ul>\n  </div>\n</ng-container>\n"
 
 /***/ }),
 
@@ -213,6 +213,7 @@ var QuestPageComponent = /** @class */ (function () {
         this.getJSON().subscribe(function (data) {
             if (data.pages) {
                 data.pages.forEach(function (page) { return _this.pages.set(page.number, page); });
+                _this.page = _this.pages.get(1);
             }
         });
     };
@@ -220,7 +221,7 @@ var QuestPageComponent = /** @class */ (function () {
         this.page = this.pages.get(route);
     };
     QuestPageComponent.prototype.getJSON = function () {
-        return this.http.get('quest.json');
+        return this.http.get('mock/quest.json');
     };
     QuestPageComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -242,7 +243,7 @@ var QuestPageComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Добро пожаловать в каркас текстового квета</h2>\n<p>Тут какое-то описание</p>\n<a [routerLink]=\"['/page']\">Начать</a>"
+module.exports = "<h2>Добро пожаловать в каркас текстового квеста</h2>\n<p>Тут какое-то описание</p>\n<a [routerLink]=\"['/page']\">Начать</a>"
 
 /***/ }),
 
