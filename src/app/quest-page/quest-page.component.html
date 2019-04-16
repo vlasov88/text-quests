@@ -1,3 +1,9 @@
-<h2>Добро пожаловать в каркас текстового квета</h2>
-<p>Тут какое-то описание</p>
-<a [routerLink]="['/page']">Начать</a>
+<ng-container *ngIf="page">
+  <h2>{{page?.caption}}</h2>
+  <p>{{page?.text}}</p>
+  <div *ngIf="page.options">
+    <ul *ngFor="let option of page.options">
+      <li *ngIf="calcCondition(option)"><button (click)="onClick(option.route)">{{option.text}}</button></li>
+    </ul>
+  </div>
+</ng-container>

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
+import { QuestPageComponent } from './quest-page/quest-page.component';
 
 const routes: Routes = [
   {
@@ -9,7 +10,7 @@ const routes: Routes = [
     component: WelcomePageComponent
   },
   {
-    path: 'page'
+    path: 'page',
     component: QuestPageComponent
   }
 ];
